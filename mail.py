@@ -12,13 +12,16 @@ if not raw_data:
     exit(0)
 flag = 0
 for data in raw_data:
+    if data['actor']['login'] != name:
+        print("It's an organisation's name")
+        exit(0)
     if data['type'] == 'PushEvent':
         email = data['payload']['commits'][0]['author']['email']
         flag = 1
 
 if flag == 0:
-    print("Unable to retrieve mail ID")
+    print("Unable to retrieve Mail ID")
 else:
     print("The email ID is : " + email)
 
-
+3
