@@ -11,6 +11,7 @@ if not raw_data:
     print("Not a valid user name")
     exit(0)
 flag = 0
+email1 = []
 for data in raw_data:
     if data['actor']['login'] != name:
         print("It's an organisation's name")
@@ -25,12 +26,16 @@ for data in raw_data:
         if data['type'] == 'PushEvent':
             #print(data['payload']['commits'])
             for commit in data['payload']['commits']:
-               email = commit['author']['email']
+               email1.append(commit['author']['email'])
                flag = 1
 
 if flag == 0:
     print("Unable to retrieve Mail ID")
 else:
-    print("The email ID is : " + email)
+    if not email1:
+        print("The email ID is : " + email)
+    else:
+        print("Conflicting mail IDs, the list of mail IDs are\n")
+        for mail in email1:
+            print(mail)
 
-3
