@@ -32,5 +32,3 @@ if flag == 0:
     print("Unable to retrieve Mail ID")
 else:
     print("The email ID is : " + email)
-
-3
